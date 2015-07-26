@@ -24,31 +24,45 @@
     <script>
 
       $(document).ready(function() {
-        var index = 0;  
+        var profile = "all";
+        var index = 0; 
+        var $section = $('section'); 
             
         var addTweets = function() {
-          var $section = $('section');
-
           var count = streams.home.length;
 
           while(index <= count - 1) {
-            var tweet = streams.home[index];
+            var tweet = profile === "all" ? streams.home[index] : streams.users[profile][index];
             var $tweet = $('<div class="tweets"></div>');
-            var user = '<p><a href="#" class=' + tweet.user + '>@' + tweet.user + '</a></p>';
+            var username = '<p><a href="#" class=' + tweet.user + '>@' + tweet.user + '</a></p>';
             var timestamp = '<p>' + tweet.created_at + '</p>';
             var message = '<p>' + tweet.message + '</p>';
             
-            $tweet.html(user + timestamp + message);
+            $tweet.html(username + timestamp + message);
             $tweet.prependTo($section);
             index += 1;
           }
 
           index = streams.home.length;
+          
+          tweetIntervals();
 
         };
+
+        var tweetIntervals = function() {
+          setInterval(addTweets, 10000);
+        }
+
+        $('.main').on('click', 'a', function(event) {
+          event.preventDefault();
+          clearInterval(tweetIntervals);
+          profile = $(this).attr('class');
+          index = 0;
+          $section.html('');
+          addTweets();
+        });
       
-        addTweets();
-        setInterval(addTweets, 10000);
+        addTweets();  
 
       });
 
