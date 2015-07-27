@@ -10,12 +10,15 @@
        <h1>Twittler</h1>
     </header>
 
-    <aside>
-      <h2 class="profile">All Users</h2>
-    </aside>
+    <div class="wrapper">
+      <aside>
+        <h2 class="profile">All Users</h2>
+        <h3 class="nav">Show All Users</h3>
+      </aside>
 
-    <section class="main">
-    </section>
+      <section class="main">
+      </section>
+    </div>
 
     <footer>
     </footer>
@@ -24,18 +27,18 @@
     <script>
 
       $(document).ready(function() {
-        var profile = "all";
+        var profile = "All Users";
         var index = 0; 
         var $section = $('section'); 
             
         var addTweets = function() {
-          var count = streams.home.length;
+          var count = profile === "All Users" ? streams.home.length : streams.users[profile].length;
 
           while(index <= count - 1) {
-            var tweet = profile === "all" ? streams.home[index] : streams.users[profile][index];
+            var tweet = profile === "All Users" ? streams.home[index] : streams.users[profile][index];
             var $tweet = $('<div class="tweets"></div>');
             var username = '<p><a href="#" class=' + tweet.user + '>@' + tweet.user + '</a></p>';
-            var timestamp = '<p>' + tweet.created_at + '</p>';
+            var timestamp = '<p class="timestamp">' + tweet.created_at + '</p>';
             var message = '<p>' + tweet.message + '</p>';
             
             $tweet.html(username + timestamp + message);
@@ -43,23 +46,33 @@
             index += 1;
           }
 
-          index = streams.home.length;
+          index = count;
           
           tweetIntervals();
 
         };
 
         var tweetIntervals = function() {
-          setInterval(addTweets, 10000);
-        }
+          setInterval(addTweets, 1500);
+        };
+
+        var switchProfile = function(prof) {
+          clearInterval(tweetIntervals);
+          profile = prof;
+          index = 0;
+          $('.profile').text(prof);
+          $section.html('');
+          addTweets();
+        };
 
         $('.main').on('click', 'a', function(event) {
           event.preventDefault();
-          clearInterval(tweetIntervals);
-          profile = $(this).attr('class');
-          index = 0;
-          $section.html('');
-          addTweets();
+          switchProfile($(this).attr('class'));
+        });
+
+        $('.nav').on('click', function(event) {
+          event.preventDefault();
+          switchProfile("All Users");  
         });
       
         addTweets();  

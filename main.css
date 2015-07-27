@@ -73,7 +73,27 @@ h2 {
 	padding: 40px;
 }
 
+a {
+	font: bold 14px/18px Helvetica, Arial, sans-serif;
+	color: #189ad3;
+	text-decoration: none;
+}
+
+aside {
+	float: left;
+	width: 300px;
+}
+
+section {
+	float: right;
+	width: 400px;
+}
+
 /* ====================== CLASSES ====================== */
+.wrapper {
+	margin: 20px auto;
+	width: 770px;
+}
 
 .tweets {
 	width: 400px;
@@ -95,6 +115,25 @@ h2 {
 	margin-bottom: 20px;
 }
 
+.nav {
+	background: #189ad3;
+	font: normal 16px/20px Helvetica, Arial, sans-serif;
+	color: #fff;
+	text-align: center;
+	vertical-align: top;
+	margin: 20px 50px;
+	width: 300px;
+	border-radius: 10px;
+	padding: 10px;
+}
+
+.timestamp {
+	font: normal 12px/16px Helvetica, Arial, sans-serif;
+	padding-bottom: 8px;
+}
+
+
+
 /* ======================= LAYOUT ======================= */
 
 *,
@@ -103,10 +142,6 @@ h2 {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
-}
-
-aside {
-	float: left;
 }
 
 /* ====================== CLEARFIX ====================== */
