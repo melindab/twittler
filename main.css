@@ -56,8 +56,9 @@ body {
 }
 
 h1 {
-	background: #fff;
-	font: bold 24px/28px Helvetica, Arial, sans-serif;
+	background: #189ad3;
+	color: #fff;
+	font: 200 24px/28px Helvetica, Arial, sans-serif;
 	text-align: center;
 	padding: 63px;
 }
@@ -70,6 +71,7 @@ h2 {
 	height: 100px;
 	width: 300px;
 	border-radius: 10px;
+  border: 2px solid #dbebf6;
 	padding: 40px;
 }
 
@@ -77,6 +79,10 @@ a {
 	font: bold 14px/18px Helvetica, Arial, sans-serif;
 	color: #189ad3;
 	text-decoration: none;
+}
+
+a:hover {
+	color: #165eb5;
 }
 
 aside {
@@ -89,6 +95,10 @@ section {
 	width: 400px;
 }
 
+button:focus {
+	outline:0;
+}
+
 /* ====================== CLASSES ====================== */
 .wrapper {
 	margin: 20px auto;
@@ -98,9 +108,9 @@ section {
 .tweets {
 	width: 400px;
 	background: #fff;
-	margin: 0px auto;
+	margin: -2px auto;
 	padding: 10px;
-	border: 1px solid #dbebf6;
+	border: 2px solid #dbebf6;
 }
 
 .tweets:first-child {
@@ -115,22 +125,34 @@ section {
 	margin-bottom: 20px;
 }
 
-.nav {
+.profile-button {
 	background: #189ad3;
 	font: normal 16px/20px Helvetica, Arial, sans-serif;
 	color: #fff;
 	text-align: center;
 	vertical-align: top;
-	margin: 20px 50px;
+	margin: 5px 50px;
 	width: 300px;
 	border-radius: 10px;
 	padding: 10px;
+	border: 0;
+	-moz-box-shadow: inset -3px -3px 3px #165eb5;
+	-webkit-box-shadow: inset -3px -3px 3px #165eb5;
+	box-shadow: inset -3px -3px 3px #165eb5;
+}
+
+.profile-button:hover {
+	background: #165eb5;
+	-moz-box-shadow: inset -3px -3px 3px #1c4882;
+	-webkit-box-shadow: inset -3px -3px 3px #1c4882;
+	box-shadow: inset -3px -3px 3px #1c4882;
 }
 
 .timestamp {
 	font: normal 12px/16px Helvetica, Arial, sans-serif;
 	padding-bottom: 8px;
 }
+
 
 
 
@@ -144,8 +166,3 @@ section {
           box-sizing: border-box;
 }
 
-/* ====================== CLEARFIX ====================== */
-
-/* ===================== TYPOGRAPHY ===================== */
-
-/* ===================== NAVIGATION ===================== */

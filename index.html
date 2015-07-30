@@ -13,7 +13,7 @@
     <div class="wrapper">
       <aside>
         <h2 class="profile">All Users</h2>
-        <h3 class="nav">Show All Users</h3>
+        <button class="profile-button">Show All Users</h3>
       </aside>
 
       <section class="main">
@@ -70,7 +70,7 @@
           switchProfile($(this).attr('class'));
         });
 
-        $('.nav').on('click', function(event) {
+        $('.profile-button').on('click', function(event) {
           event.preventDefault();
           switchProfile("All Users");  
         });
