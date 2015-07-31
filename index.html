@@ -38,7 +38,7 @@
             var tweet = profile === "All Users" ? streams.home[index] : streams.users[profile][index];
             var $tweet = $('<div class="tweets"></div>');
             var username = '<p><a href="#" class=' + tweet.user + '>@' + tweet.user + '</a></p>';
-            var timestamp = '<p class="timestamp">' + tweet.created_at + '</p>';
+            var timestamp = '<p class="timestamp">' + getTime(tweet.created_at) + '</p>';
             var message = '<p>' + tweet.message + '</p>';
             
             $tweet.html(username + timestamp + message);
@@ -64,6 +64,16 @@
           $section.html('');
           addTweets();
         };
+
+        var getTime = function(now) {
+          var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+          var month = now.getMonth();
+          var hour = now.getHours() % 12 || 12;
+          var minutes = now.getMinutes() < 10 ? ("0" + now.getMinutes()) : now.getMinutes();
+          console.log(month);
+          var time = months[month] + " " + now.getDate() + ", " + now.getFullYear() + " at " + hour + ":" + minutes;
+          return time;
+        }
 
         $('.main').on('click', 'a', function(event) {
           event.preventDefault();
